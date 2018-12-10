@@ -15,5 +15,11 @@
                    ToolTip="Expiriment"
                    Margin="30"
                    />
+
+        <TextBlock Name="TextColor"
+                   Text="Coloring the text"
+                   Margin="70"
+                   Background="#FFDCFFDC"
+            />
     </Grid>
 </Window>

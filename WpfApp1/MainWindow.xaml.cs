@@ -27,9 +27,24 @@ namespace WpfApp1
 
         private void Window_Initialized(object sender, EventArgs e)
         {
+            //Range: -1 (not measured)
+            //        0 (0 mm rain)
+            //        1 (> 0 mm rain)
+            //        2 (< 1 mm rain)
+            //       *3 (1 mm rain)
+            //      120 (40 mm rain = maximum)
+
+            //Falling rain
+            for (int Value = -1; Value <= 40; Value++)
+            {
+                AddMeasure($"{Value}", "mm rain", Value);
+            }
+
+            #region Development
             //Border border = new Border();
             //border = Test;
 
+            /*
             Random rnd = new Random();
 
             for (byte i = 0; i < 255; i++)
@@ -40,10 +55,52 @@ namespace WpfApp1
 
                 StackPanalMain.Children.Add(NewBlock(R, G, B));
             }
+            */
+            #endregion
 
         }
 
-        private Border NewBlock(byte Red, byte Green, byte Blue)
+        private void AddMeasure(string Title, string Text, int Value)
+        {
+            byte r, g, b;
+
+            Text = $"{Value} {Text}";
+            switch (Value)
+            {
+                case -1:
+                    r = 220;
+                    g = 220;
+                    b = 220;
+                    Text = "Not measured";
+                    break;
+                case 0:
+                    r = 220;
+                    g = 220;
+                    b = 255;
+                    break;
+                case 1:
+                    r = 220;
+                    g = 230;
+                    b = 220;
+                    break;
+                case 2:
+                    r = 220;
+                    g = 240;
+                    b = 220;
+                    break;
+                default:
+                    r = (byte)(220 - Value * 5);
+                    g = 255;
+                    b = (byte)(220 - Value * 5);
+                    break;
+            }
+
+            Text = $"{Title}\n{Text}\nR: {r}, G: {g}, B: {b}";
+
+            StackPanalMain.Children.Add(AddBlock(Text, r, g, b));
+        }
+
+        private Border AddBlock(string Text, byte Red, byte Green, byte Blue)
         {
             Border border = new Border();
             SolidColorBrush brush = new SolidColorBrush();
@@ -54,6 +111,8 @@ namespace WpfApp1
             border.Background = brush;
             border.Height = 8;
             border.Width = 8;
+
+            border.ToolTip = Text;
 
             return border;
         }
