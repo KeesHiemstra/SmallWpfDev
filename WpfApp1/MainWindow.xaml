@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Blocks" Height="200" Width="800" Initialized="Window_Initialized">
+        Title="Blocks" 
+        Height="200" 
+        Width="800" 
+        Initialized="Window_Initialized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5"/>
