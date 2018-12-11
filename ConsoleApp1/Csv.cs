@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Csv
+    internal class Csv
     {
         public static List<Rain> ReadCsv(string Path)
         {
@@ -38,9 +35,8 @@ namespace ConsoleApp1
                                 Message = field[1]
                             };
 
-                            Console.WriteLine($"{record.Date.ToString("yyyy-MM-dd HH:mm:ss")}: {record.Message}");
+                            data.Add(record);
                         }
-
                     }
                 }
             }

@@ -19,6 +19,8 @@ namespace ConsoleApp1
             
             FallenRain = Csv.ReadCsv(FilePath);
 
+            Console.WriteLine(FallenRain.Count);
+
             Console.WriteLine();
             Console.ReadKey();
         }
