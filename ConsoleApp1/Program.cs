@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +11,17 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            for (int i = -1; i < 40; i++)
-            {
-                Console.WriteLine(i);
-            }
+            //Settings
+            string FilePath = @"C:\Users\Kees\OneDrive\Data\Rain.csv";
+
+            //Data
+            List<Rain> FallenRain = new List<Rain>();
+            
+            FallenRain = Csv.ReadCsv(FilePath);
 
             Console.WriteLine();
             Console.ReadKey();
         }
+
     }
 }
