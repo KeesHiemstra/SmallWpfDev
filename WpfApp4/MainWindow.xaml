@@ -6,17 +6,25 @@
         xmlns:local="clr-namespace:WpfApp4"
         mc:Ignorable="d"
         Title="MainWindow" Height="200" Width="300">
+    <Window.InputBindings>
+        <KeyBinding Key="F4"
+              Modifiers="Alt" 
+              Command="ApplicationCommands.Close" />
+    </Window.InputBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Name="GridRowMenu" 
+                           Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        
+        <!-- Main menu -->
         <Menu Grid.Column="0"
               Grid.Row="0"
               Grid.ColumnSpan="9"
@@ -39,5 +47,19 @@
                 <MenuItem Command="ApplicationCommands.Paste"/>
             </MenuItem>
         </Menu>
+        
+        <!-- StatusBar -->
+        <StatusBar Name="StatusBarMain"
+                   Grid.Column="0"
+                   Grid.Row="2"
+                   Grid.ColumnSpan="9"
+                   >
+            <StatusBarItem>
+                <TextBlock Name="StatusBarClientShortName"
+                           Text="n/a"/>
+            </StatusBarItem>
+            <Separator/>
+            <TextBlock/>
+        </StatusBar>
     </Grid>
 </Window>

@@ -35,7 +35,6 @@ namespace WpfApp4
       Clients.Add(new Client { Id = 2, Name = "DTC (HPE,Hewlett-Pacard)", ShortName = "HP", Active = false });
 
       //Fill menu Main-Client
-      //MenuFileClient.Items.Add(new MenuItem {  } )
       foreach (var client in Clients)
       {
         NewMenuItem(client);
@@ -45,8 +44,10 @@ namespace WpfApp4
     private void NewMenuItem(Client client)
     {
       int Counter = MenuFileClient.Items.Count;
-      MenuItem addMenuItem = new MenuItem();
-      addMenuItem.Header = client.ShortName;
+      MenuItem addMenuItem = new MenuItem
+      {
+        Header = client.ShortName
+      };
       if (client.Active && Counter < 9)
       {
         addMenuItem.InputGestureText = $"Ctrl-{Counter + 1}";
@@ -56,7 +57,13 @@ namespace WpfApp4
 
     private void MenuFileExit_Click(object sender, RoutedEventArgs e)
     {
-      // Exit the application
+      //Call closing the applocation
+      WindowClose();
+    }
+
+    public void WindowClose()
+    {
+      //Close the appplication
       this.Close();
     }
   }
