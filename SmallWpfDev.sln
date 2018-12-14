@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowFalledRain", "ShowFalle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp3", "WpfApp3\WpfApp3.csproj", "{D9CE1D1C-DB72-49D4-B6A1-62608D36EAB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp4", "WpfApp4\WpfApp4.csproj", "{5A92863C-0879-4CF4-BF26-D302104AABC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D9CE1D1C-DB72-49D4-B6A1-62608D36EAB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9CE1D1C-DB72-49D4-B6A1-62608D36EAB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9CE1D1C-DB72-49D4-B6A1-62608D36EAB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A92863C-0879-4CF4-BF26-D302104AABC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A92863C-0879-4CF4-BF26-D302104AABC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A92863C-0879-4CF4-BF26-D302104AABC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A92863C-0879-4CF4-BF26-D302104AABC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
