@@ -5,22 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="200" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Goeiemiddag"/>
-                <TextBox Text="World"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Hello"/>
-                <TextBlock Text="World"/>
-            </StackPanel>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Column="0"
+              Grid.Row="0"
+              Grid.ColumnSpan="9"
+              >
+            <MenuItem Name="MenuMainFile"
+                      Header="_File">
+                <MenuItem Name="MenuFileClient" 
+                          Header="_Client"
+                          />
+                <Separator/>
+                <MenuItem Header="E_xit"
+                          InputGestureText="Alt+F4"
+                          Click="MenuFileExit_Click"
+                          
+                          />
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Command="ApplicationCommands.Copy"/>
+                <MenuItem Command="ApplicationCommands.Cut"/>
+                <MenuItem Command="ApplicationCommands.Paste"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
