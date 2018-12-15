@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WpfApp4
 {
@@ -20,7 +10,7 @@ namespace WpfApp4
   /// </summary>
   public partial class MainWindow : Window
   {
-    static List<Client> Clients = new List<Client>();
+    private static List<Client> Clients = new List<Client>();
 
     public MainWindow()
     {
@@ -55,10 +45,15 @@ namespace WpfApp4
       MenuFileClient.Items.Add(addMenuItem);
     }
 
-    private void ExitCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+    private void ExitCmd_Executed(object sender, ExecutedRoutedEventArgs e)
     {
       //Close the appplication
       this.Close();
+    }
+
+    private void ExitCmd_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+    {
+
     }
   }
 }

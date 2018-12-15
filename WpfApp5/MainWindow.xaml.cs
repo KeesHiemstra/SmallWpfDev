@@ -24,5 +24,16 @@ namespace WpfApp5
     {
       InitializeComponent();
     }
+
+    private void ExitCmd_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+      //Exit the application
+      this.Close();
+    }
+
+    private void ExitCmd_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+    {
+      e.CanExecute = true;
+    }
   }
 }

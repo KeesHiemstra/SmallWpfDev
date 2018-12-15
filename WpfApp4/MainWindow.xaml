@@ -4,21 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp4"
+        xmlns:commands="clr-namespace:WpfApp4.Commands"
         mc:Ignorable="d"
         Title="MainWindow" Height="200" Width="300">
-    <!--
     <Window.CommandBindings>
-        <CommandBinding Command="Exit" 
-                        Executed="ExitCommandBinding_Executed"/>
+        <CommandBinding Command="{x:Static commands:ExtraApplicationCommands.ExitCmd}" 
+                        Executed="ExitCmd_Executed"
+                        CanExecute="ExitCmd_CanExecute"/>
     </Window.CommandBindings>
-    -->
-    <!--
+    
     <Window.InputBindings>
         <KeyBinding Key="F4"
               Modifiers="Alt" 
-              Command="Exit" />
+              Command="ExitCmd" />
     </Window.InputBindings>
-    -->
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
@@ -45,7 +45,7 @@
                 <Separator/>
                 <MenuItem Header="E_xit"
                           InputGestureText="Alt+F4"
-                          Command="Exit"
+                          Command="ExitCmd"
                           />
             </MenuItem>
             <MenuItem Header="_Edit">
