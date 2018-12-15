@@ -6,11 +6,19 @@
         xmlns:local="clr-namespace:WpfApp4"
         mc:Ignorable="d"
         Title="MainWindow" Height="200" Width="300">
+    <!--
+    <Window.CommandBindings>
+        <CommandBinding Command="Exit" 
+                        Executed="ExitCommandBinding_Executed"/>
+    </Window.CommandBindings>
+    -->
+    <!--
     <Window.InputBindings>
         <KeyBinding Key="F4"
               Modifiers="Alt" 
-              Command="ApplicationCommands.Close" />
+              Command="Exit" />
     </Window.InputBindings>
+    -->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
@@ -23,7 +31,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <!-- Main menu -->
         <Menu Grid.Column="0"
               Grid.Row="0"
@@ -37,8 +45,7 @@
                 <Separator/>
                 <MenuItem Header="E_xit"
                           InputGestureText="Alt+F4"
-                          Click="MenuFileExit_Click"
-                          
+                          Command="Exit"
                           />
             </MenuItem>
             <MenuItem Header="_Edit">
@@ -47,7 +54,7 @@
                 <MenuItem Command="ApplicationCommands.Paste"/>
             </MenuItem>
         </Menu>
-        
+
         <!-- StatusBar -->
         <StatusBar Name="StatusBarMain"
                    Grid.Column="0"

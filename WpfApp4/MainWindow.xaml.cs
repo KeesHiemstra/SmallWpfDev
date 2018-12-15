@@ -55,13 +55,7 @@ namespace WpfApp4
       MenuFileClient.Items.Add(addMenuItem);
     }
 
-    private void MenuFileExit_Click(object sender, RoutedEventArgs e)
-    {
-      //Call closing the applocation
-      WindowClose();
-    }
-
-    public void WindowClose()
+    private void ExitCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
     {
       //Close the appplication
       this.Close();
