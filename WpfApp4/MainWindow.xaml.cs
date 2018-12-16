@@ -23,20 +23,20 @@ namespace WpfApp4
     private void InitializeClients()
     {
       LoadClients();
+      CurrentClient = Clients[0];
 
       //Fill menu Main-Client
       foreach (var client in Clients)
       {
-        NewMenuItem(client);
+        NewMenuItem(client, CurrentClient);
       }
 
-      UpdateCurrentClient(0);
+      UpdateCurrentClient(CurrentClient);
     }
 
-    private void UpdateCurrentClient(int clientID)
+    private void UpdateCurrentClient(Client client)
     {
-      CurrentClient = Clients[clientID];
-      StatusBarClientShortName.Text = CurrentClient.ShortName;
+      StatusBarClientShortName.Text = client.ShortName;
     }
 
     private void LoadClients()
@@ -46,12 +46,14 @@ namespace WpfApp4
       Clients.Add(new Client { Id = 2, Name = "DTC (HPE,Hewlett-Pacard)", ShortName = "HP", Active = false });
     }
 
-    private void NewMenuItem(Client client)
+    private void NewMenuItem(Client client, Client defaultClient)
     {
       int Counter = MenuFileClient.Items.Count;
       MenuItem addMenuItem = new MenuItem
       {
         Header = client.ShortName,
+        IsCheckable = true,
+        IsChecked = client == defaultClient,
         Command = Commands.ExtraApplicationCommands.ClientCmd
       };
       //if (client.Active && Counter < 9)
@@ -74,7 +76,16 @@ namespace WpfApp4
 
     private void ClientCmd_Executed(object sender, ExecutedRoutedEventArgs e)
     {
-      var SelectedClient = e.Source.Header;
+      foreach (MenuItem menuItem in MenuFileClient.Items)
+      {
+        if ((string)menuItem.Header == CurrentClient.ShortName)
+        {
+          menuItem.IsChecked = false;
+        }
+      }
+      var SelectedMenuClient = ((MenuItem)e.Source).Header;
+      CurrentClient = Clients.Find(cs => cs.ShortName == (string)SelectedMenuClient);
+      UpdateCurrentClient(CurrentClient);
     }
 
     private void ClientCmd_CanExecute(object sender, CanExecuteRoutedEventArgs e)
