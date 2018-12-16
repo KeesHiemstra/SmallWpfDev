@@ -9,6 +9,8 @@ namespace WpfApp5.Commands
 {
   public class ExtraCommands
   {
+    //public static RoutedUICommand ExitCmd = new RoutedUICommand();
+
     public static RoutedUICommand ExitCmd = new
       RoutedUICommand("Exit the application", "ExitCmd", typeof(ExtraCommands));
   }
