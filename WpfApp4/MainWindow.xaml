@@ -11,12 +11,14 @@
         <CommandBinding Command="{x:Static commands:ExtraApplicationCommands.ExitCmd}" 
                         Executed="ExitCmd_Executed"
                         CanExecute="ExitCmd_CanExecute"/>
+        <CommandBinding Command="{x:Static commands:ExtraApplicationCommands.ClientCmd}"
+                        Executed="ClientCmd_Executed"/>
     </Window.CommandBindings>
     
     <Window.InputBindings>
-        <KeyBinding Key="F4"
+        <KeyBinding Key="Q"
               Modifiers="Alt" 
-              Command="ExitCmd" />
+              Command="{x:Static commands:ExtraApplicationCommands.ExitCmd}" />
     </Window.InputBindings>
     
     <Grid>
@@ -44,8 +46,7 @@
                           />
                 <Separator/>
                 <MenuItem Header="E_xit"
-                          InputGestureText="Alt+F4"
-                          Command="ExitCmd"
+                          Command="{x:Static commands:ExtraApplicationCommands.ExitCmd}"
                           />
             </MenuItem>
             <MenuItem Header="_Edit">
