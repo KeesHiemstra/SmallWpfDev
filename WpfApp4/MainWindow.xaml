@@ -24,6 +24,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
@@ -34,6 +35,36 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <StackPanel Grid.Column="1"
+                    Grid.Row="1">
+            <TextBox Name="InputMessage"
+                     Grid.ColumnSpan="2"/>
+            <TextBlock>
+                <TextBlock Text="Project"
+                           Width="75"/>
+                <TextBox Name="InputProject"
+                         />
+            </TextBlock>
+            <TextBlock>
+                <TextBlock Text="Action"
+                           Width="75"/>
+                <TextBox Name="InputAction"
+                           Width="75"/>
+            </TextBlock>
+            <TextBlock>
+                <TextBlock Text="Start time"
+                           Width="75"/>
+                <DatePicker Name="InputStart"
+                           />
+            </TextBlock>
+            <TextBlock>
+                <TextBlock Text="Finish time"
+                           Width="75"/>
+                <TextBox Name="InputFinish"
+                           Width="75"/>
+            </TextBlock>
+        </StackPanel>
+        
         <!-- Main menu -->
         <Menu Grid.Column="0"
               Grid.Row="0"
@@ -48,11 +79,6 @@
                 <MenuItem Header="E_xit"
                           Command="{x:Static commands:ExtraApplicationCommands.ExitCmd}"
                           />
-            </MenuItem>
-            <MenuItem Header="_Edit">
-                <MenuItem Command="ApplicationCommands.Copy"/>
-                <MenuItem Command="ApplicationCommands.Cut"/>
-                <MenuItem Command="ApplicationCommands.Paste"/>
             </MenuItem>
         </Menu>
 
