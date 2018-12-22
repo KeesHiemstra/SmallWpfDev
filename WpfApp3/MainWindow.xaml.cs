@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace WpfApp3
 {
@@ -30,14 +31,28 @@ namespace WpfApp3
       MainPageDate.DisplayDateEnd = DateTime.Now.AddDays(-1);
       MainPageDate.Text = PageDate.ToString();
 
-      GetPage($"https://www.uitzendinggemist.net/op/{PageDate.ToString("ddMMyyyy")}.html");
+      GetPageAsync($"https://www.uitzendinggemist.net/op/{PageDate.ToString("ddMMyyyy")}.html");
     }
 
-    private void GetPage(string PageUrl)
+    private async Task GetPageAsync(string PageUrl)
     {
+      MainPageDateDay.Text = PageDate.DayOfWeek.ToString();
       TabSourceBrowser.Source = new Uri(PageUrl);
       var http = new HttpClient();
-      //var httpRespond = await http.Get
+      var httpRespond = await http.GetAsync(PageUrl);
+      string httpResult = await httpRespond.Content.ReadAsStringAsync();
+      TabSouceText.Text = httpResult;
+
+      XmlDocument doc = new XmlDocument();
+      doc.Load(httpResult);
+      var x = doc.InnerXml;
+
+
+    }
+
+    private void TabSouceText_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+    {
+
     }
   }
 }

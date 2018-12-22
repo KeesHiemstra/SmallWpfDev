@@ -32,9 +32,13 @@
         <StackPanel Orientation="Horizontal"
                     Grid.Column="1"
                     Grid.Row="2">
-            <TextBlock Text="Date: "/>
+            <TextBlock Text="Date: "
+                       VerticalAlignment="Center"/>
             <DatePicker Name="MainPageDate" 
                         Text=""/>
+            <TextBlock Name="MainPageDateDay"
+                       VerticalAlignment="Center"
+                       Margin="5,0,0,0"/>
         </StackPanel>
 
         <TabControl Grid.Column="1"
@@ -59,7 +63,10 @@
                 <WebBrowser Name="TabSourceBrowser"/>
             </TabItem>
             <TabItem Header="Source">
-                <TextBlock Name="TabSouceText"
+                <TextBox Name="TabSouceText"
+                           TextWrapping="Wrap"
+                           ScrollViewer.CanContentScroll="True"
+                           ScrollViewer.VerticalScrollBarVisibility="Visible"
                            Text="" />
             </TabItem>
         </TabControl>
