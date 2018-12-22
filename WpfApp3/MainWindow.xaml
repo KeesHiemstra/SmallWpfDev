@@ -51,7 +51,9 @@
                 
             </TabItem>
             <TabItem Header="Settings">
-                
+                <TreeView>
+                    
+                </TreeView>
             </TabItem>
             <TabItem Header="Browser">
                 <WebBrowser Name="TabSourceBrowser"/>
