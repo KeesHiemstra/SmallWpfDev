@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -36,17 +37,16 @@ namespace WpfApp3
 
     private async Task GetPageAsync(string PageUrl)
     {
-      MainPageDateDay.Text = PageDate.DayOfWeek.ToString();
-      TabSourceBrowser.Source = new Uri(PageUrl);
-      var http = new HttpClient();
-      var httpRespond = await http.GetAsync(PageUrl);
-      string httpResult = await httpRespond.Content.ReadAsStringAsync();
-      TabSouceText.Text = httpResult;
+      //MainPageDateDay.Text = PageDate.DayOfWeek.ToString();
+      //TabSourceBrowser.Source = new Uri(PageUrl);
+      //var http = new HttpClient();
+      //var httpRespond = await http.GetAsync(PageUrl);
+      //string httpResult = await httpRespond.Content.ReadAsStringAsync();
+      //TabSouceText.Text = httpResult;
 
-      XmlDocument doc = new XmlDocument();
-      doc.Load(httpResult);
-      var x = doc.InnerXml;
+      //HtmlDocument doc = new HtmlDocument();
 
+      IHTMLDocument2 htmlDocument = (IHTMLDocument2)new mshtml.HTMLDocument();
 
     }
 
