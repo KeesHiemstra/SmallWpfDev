@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,20 +23,31 @@ namespace Medicines
   public partial class MainWindow : Window
   {
     private static MedicineStock Stock = new MedicineStock();
+    private static string StockFile = @"C:\Temp\Medicines.json";
 
     public MainWindow()
     {
-      Stock.RecordingDate = new DateTime(year: 2018, month: 12, day: 27);
-      Stock.Medicines.Add(new Medicine { Name = "Metoprololsuccinaat",
-        Information = "",
-        PiecesPerStrip = 10,
-        StripsPerBox = 9,
-        PiecesPerBox = 90,
-        Stock = 2
-      });
+      //Stock.RecordingDate = new DateTime(year: 2018, month: 12, day: 27);
+      //Stock.Medicines.Add(new Medicine { Name = "Metoprololsuccinaat",
+      //  Information = "",
+      //  PiecesPerStrip = 10,
+      //  StripsPerBox = 9,
+      //  PiecesPerBox = 90,
+      //  Stock = 2
+      //});
 
       InitializeComponent();
 
+      LoadData();
+    }
+
+    private void LoadData()
+    {
+      using (StreamReader sr = File.OpenText(StockFile))
+      {
+        string json = sr.ReadToEnd();
+        Stock = JsonConvert.DeserializeObject<MedicineStock>(json);
+      }
       DisplayDate();
     }
 
@@ -46,6 +59,16 @@ namespace Medicines
     private void MenuExit_Click(object sender, RoutedEventArgs e)
     {
       this.Close();
+    }
+
+    private void MenuOpen_Click(object sender, RoutedEventArgs e)
+    {
+      LoadData();
+    }
+
+    private void MenuSave_Click(object sender, RoutedEventArgs e)
+    {
+      Stock.Save(StockFile);
     }
   }
 }

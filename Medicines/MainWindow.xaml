@@ -20,7 +20,10 @@
         </Grid.RowDefinitions>
 
         <Menu Grid.ColumnSpan="9">
-            <MenuItem Header="File">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open" Click="MenuOpen_Click"/>
+                <MenuItem Header="_Save" Click="MenuSave_Click"/>
+                <Separator/>
                 <MenuItem Header="E_xit" Click="MenuExit_Click"/>
             </MenuItem>
             <MenuItem Header="Medicine">
