@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 
 namespace Medicines
@@ -8,7 +9,7 @@ namespace Medicines
   public class MedicineStock
   {
     public DateTime RecordingDate { get; set; }
-    public List<Medicine> Medicines = new List<Medicine>();
+    public ObservableCollection<Medicine> Medicines = new ObservableCollection<Medicine>();
 
     public void Save(string Path)
     {

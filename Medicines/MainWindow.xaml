@@ -16,7 +16,9 @@
             <RowDefinition Height="Auto"/> <!-- 0: menu -->
             <RowDefinition Height="5"/>
             <RowDefinition Height="Auto"/> <!-- 2: date -->
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/> <!-- 4: overview -->
+            <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
 
         <Menu Grid.ColumnSpan="9">
@@ -38,6 +40,13 @@
                        VerticalAlignment="Center"/>
             <DatePicker Name="DisplayRecordDate"/>
         </StackPanel>
+
+        <DataGrid x:Name="DataGridMedicines"
+                  Grid.Column="1"
+                  Grid.Row="4"
+                  ItemsSource="{Binding}">
+            
+        </DataGrid>
         
     </Grid>
 </Window>

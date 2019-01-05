@@ -39,6 +39,8 @@ namespace Medicines
       InitializeComponent();
 
       LoadData();
+
+      DataGridMedicines.DataContext = Stock.Medicines;
     }
 
     private void LoadData()
