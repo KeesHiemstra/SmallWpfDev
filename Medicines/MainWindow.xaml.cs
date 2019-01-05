@@ -23,24 +23,21 @@ namespace Medicines
   public partial class MainWindow : Window
   {
     private static MedicineStock Stock = new MedicineStock();
-    private static string StockFile = @"C:\Temp\Medicines.json";
+    private static string StockFile = GetStockFile();
 
     public MainWindow()
     {
-      //Stock.RecordingDate = new DateTime(year: 2018, month: 12, day: 27);
-      //Stock.Medicines.Add(new Medicine { Name = "Metoprololsuccinaat",
-      //  Information = "",
-      //  PiecesPerStrip = 10,
-      //  StripsPerBox = 9,
-      //  PiecesPerBox = 90,
-      //  Stock = 2
-      //});
-
       InitializeComponent();
 
       LoadData();
+      UpdateDateGridMedicines();
 
       DataGridMedicines.DataContext = Stock.Medicines;
+    }
+
+    private void UpdateDateGridMedicines()
+    {
+      Stock.UpdateRecordingDates();
     }
 
     private void LoadData()
@@ -56,6 +53,14 @@ namespace Medicines
     private void DisplayDate()
     {
       DisplayRecordDate.SelectedDate = Stock.RecordingDate;
+    }
+
+    private static string GetStockFile()
+    {
+      string OneDrive = Environment.GetEnvironmentVariable("OneDrive");
+      string stockFile = $"{OneDrive}\\Data\\Medicines.json";
+
+      return stockFile;
     }
 
     private void MenuExit_Click(object sender, RoutedEventArgs e)

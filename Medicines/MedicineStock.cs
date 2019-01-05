@@ -12,6 +12,17 @@ namespace Medicines
     public DateTime RecordingDate { get; set; }
     public ObservableCollection<Medicine> Medicines = new ObservableCollection<Medicine>();
 
+    public void UpdateRecordingDates()
+    {
+      foreach (var item in Medicines)
+      {
+        if (item.RecordingDate == new DateTime(1, 1, 1))
+        {
+          item.RecordingDate = RecordingDate;
+        }
+      }
+    }
+
     public void Save(string Path)
     {
       string json = JsonConvert.SerializeObject(this, Formatting.Indented);

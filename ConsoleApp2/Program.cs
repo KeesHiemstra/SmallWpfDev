@@ -10,7 +10,7 @@ namespace ConsoleApp2
   {
     static void Main(string[] args)
     {
-      
+      Console.WriteLine(DateTime.Now.Date);
 
       Console.Write("Press any key...");
       Console.ReadKey();
