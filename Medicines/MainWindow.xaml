@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Medicines"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Medicines" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
@@ -13,11 +13,14 @@
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/> <!-- 0: menu -->
+            <RowDefinition Height="Auto"/>
+            <!-- 0: menu -->
             <RowDefinition Height="5"/>
-            <RowDefinition Height="Auto"/> <!-- 2: date -->
+            <RowDefinition Height="Auto"/>
+            <!-- 2: date -->
             <RowDefinition Height="5"/>
-            <RowDefinition Height="*"/> <!-- 4: overview -->
+            <RowDefinition Height="*"/>
+            <!-- 4: overview -->
             <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
 
@@ -44,9 +47,50 @@
         <DataGrid x:Name="DataGridMedicines"
                   Grid.Column="1"
                   Grid.Row="4"
-                  ItemsSource="{Binding}">
-            
+                  ItemsSource="{Binding}"
+                  AlternationCount="2"
+                  AutoGenerateColumns="False">
+            <DataGrid.AlternatingRowBackground>
+                <SolidColorBrush Color="#FFD3F0E0"/>
+            </DataGrid.AlternatingRowBackground>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="_Add"/>
+                    <MenuItem Header="_Details"
+                              Click="MenuDataDetails_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Information"
+                                    Binding="{Binding Information}"/>
+                <DataGridTextColumn Header="#/strip"
+                                    Binding="{Binding PiecesPerStrip}"/>
+                <DataGridTextColumn Header="Strips"
+                                    Binding="{Binding StripsPerBox}"/>
+                <DataGridTextColumn Header="#/box"
+                                    Binding="{Binding PiecesPerBox}"/>
+                <DataGridCheckBoxColumn Header="Service"
+                                        Binding="{Binding IsService}"/>
+                <DataGridCheckBoxColumn Header="Fixed"
+                                        Binding="{Binding UseFixed}"/>
+                <DataGridTextColumn Header="Days"
+                                    Binding="{Binding UseDaysInPerode}"/>
+                <DataGridTextColumn Header="#/periode"
+                                    Binding="{Binding UsePerPeriode}"/>
+                <DataGridTextColumn Header="Date"
+                                    Binding="{Binding RecordingDate}"/>
+                <DataGridTextColumn Header="Stock"
+                                    Binding="{Binding Stock}"/>
+                <DataGridTextColumn Header="Actual"
+                                    Binding="{Binding Actual}" 
+                                    FontStyle="Italic"/>
+                <DataGridTextColumn Header="End date"
+                                    Binding="{Binding EmptyDate}"
+                                    FontStyle="Italic"/>
+            </DataGrid.Columns>
         </DataGrid>
-        
+
     </Grid>
 </Window>

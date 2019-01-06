@@ -77,5 +77,14 @@ namespace Medicines
     {
       Stock.Save(StockFile);
     }
+
+    private void MenuDataDetails_Click(object sender, RoutedEventArgs e)
+    {
+      
+
+
+      //MedicineDetails medicineDetails = new MedicineDetails();
+      //medicineDetails.Show();
+    }
   }
 }
