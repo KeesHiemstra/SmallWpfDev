@@ -124,7 +124,7 @@ namespace Medicines
 
     private DateTime EstimateEmptyDate()
     {
-      return DateTime.Now.Date.AddDays((int)UsePerDay * Actual);
+      return DateTime.Now.Date.AddDays((int)(Actual / UsePerDay));
     }
   }
 }

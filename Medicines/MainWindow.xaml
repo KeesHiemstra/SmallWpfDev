@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Medicines"
         mc:Ignorable="d"
-        Title="Medicines" Height="450" Width="800">
+        Title="Medicines" Height="450" Width="1006">
     <Window.Resources>
     </Window.Resources>
     <Grid>
@@ -43,14 +43,15 @@
                     Grid.Row="2">
             <TextBlock Text="Recording date: "
                        VerticalAlignment="Center"/>
-            <DatePicker Name="DisplayRecordDate"/>
+            <DatePicker Name="DisplayRecordDate" Width="96"/>
         </StackPanel>
 
-        <DataGrid x:Name="DataGridMedicines"
+        <DataGrid Name="DataGridMedicines"
                   Grid.Column="1"
                   Grid.Row="4"
                   ItemsSource="{Binding}"
                   AlternationCount="2"
+                  CanUserAddRows="False"
                   AutoGenerateColumns="False">
             <DataGrid.AlternatingRowBackground>
                 <SolidColorBrush Color="#FFD3F0E0"/>
@@ -81,29 +82,30 @@
                                     Binding="{Binding UseDaysInPerode}"/>
                 <DataGridTextColumn Header="#/periode"
                                     Binding="{Binding UsePerPeriode}"/>
-                <DataGridTextColumn Header="Date"
-                                    Binding="{Binding RecordedDate}"/>
-                <!--
-                <DataGridTemplateColumn Header="Date">
+
+                <DataGridTemplateColumn Header="Date" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding RecordingDate}"
+                            <TextBlock Text="{Binding RecordingDate, StringFormat=\{0:yyyy-MM-dd\}}"
+                                       HorizontalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <DatePicker SelectedDate="{Binding RecordingDate}"
+                            <DatePicker SelectedDate="{Binding RecordingDate}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-                -->
+
                 <DataGridTextColumn Header="Stock"
                                     Binding="{Binding Stock}"/>
                 <DataGridTextColumn Header="Actual"
                                     Binding="{Binding Actual}" 
+                                    IsReadOnly="True"
                                     FontStyle="Italic"/>
                 <DataGridTextColumn Header="End date"
-                                    Binding="{Binding EmptyDate}"
+                                    Binding="{Binding EmptyDate, StringFormat=\{0:yyyy-MM-dd\}}"
+                                    IsReadOnly="True"
                                     FontStyle="Italic"/>
             </DataGrid.Columns>
         </DataGrid>
