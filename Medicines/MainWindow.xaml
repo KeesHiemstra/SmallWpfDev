@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:Medicines"
         mc:Ignorable="d"
         Title="Medicines" Height="450" Width="800">
+    <Window.Resources>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
@@ -80,7 +82,21 @@
                 <DataGridTextColumn Header="#/periode"
                                     Binding="{Binding UsePerPeriode}"/>
                 <DataGridTextColumn Header="Date"
-                                    Binding="{Binding RecordingDate}"/>
+                                    Binding="{Binding RecordedDate}"/>
+                <!--
+                <DataGridTemplateColumn Header="Date">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding RecordingDate}"
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding RecordingDate}"
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                -->
                 <DataGridTextColumn Header="Stock"
                                     Binding="{Binding Stock}"/>
                 <DataGridTextColumn Header="Actual"
