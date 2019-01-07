@@ -7,10 +7,10 @@ using System.Linq;
 
 namespace Medicines
 {
-  public class MedicineStock
+  public class MedicineList
   {
     public DateTime RecordingDate { get; set; }
-    public ObservableCollection<Medicine> Medicines = new ObservableCollection<Medicine>();
+    public ObservableCollection<MedicineItem> Medicines = new ObservableCollection<MedicineItem>();
 
     public void UpdateRecordingDates()
     {

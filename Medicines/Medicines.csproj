@@ -76,11 +76,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Medicine.cs" />
     <Compile Include="MedicineDetails.xaml.cs">
       <DependentUpon>MedicineDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MedicineStock.cs" />
+    <Compile Include="MedicineItem.cs" />
+    <Compile Include="MedicineList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

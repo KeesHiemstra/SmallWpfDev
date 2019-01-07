@@ -19,9 +19,9 @@ namespace Medicines
   /// </summary>
   public partial class MedicineDetails : Window
   {
-    private Medicine _Medicine;
+    private MedicineItem _Medicine;
 
-    public MedicineDetails(Medicine medicine)
+    public MedicineDetails(MedicineItem medicine)
     {
       _Medicine = medicine;
 

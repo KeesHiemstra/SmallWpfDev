@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Medicines
 {
-  public class Medicine
+  public class MedicineItem
   {
     private int Days;
     private float UsePerDay;

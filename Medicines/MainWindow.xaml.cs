@@ -22,7 +22,7 @@ namespace Medicines
   /// </summary>
   public partial class MainWindow : Window
   {
-    private static MedicineStock Stock = new MedicineStock();
+    private static MedicineList Stock = new MedicineList();
     private static string StockFile = GetStockFile();
 
     public MainWindow()
@@ -45,7 +45,7 @@ namespace Medicines
       using (StreamReader sr = File.OpenText(StockFile))
       {
         string json = sr.ReadToEnd();
-        Stock = JsonConvert.DeserializeObject<MedicineStock>(json);
+        Stock = JsonConvert.DeserializeObject<MedicineList>(json);
       }
       DisplayDate();
     }
