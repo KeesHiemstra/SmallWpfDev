@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="Medicines" Height="450" Width="1006">
     <Window.Resources>
+        <ContextMenu  x:Key="RowMenu" DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
+            <MenuItem Header="_Edit" Command="{Binding EditCommand}"/>
+        </ContextMenu>
+        <Style x:Key="DefaultRowStyle" TargetType="{x:Type DataGridRow}">
+            <Setter Property="ContextMenu" Value="{StaticResource RowMenu}" />
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -52,10 +58,13 @@
                   ItemsSource="{Binding}"
                   AlternationCount="2"
                   CanUserAddRows="False"
+                  RowStyle="{StaticResource DefaultRowStyle}"
                   AutoGenerateColumns="False">
+            
             <DataGrid.AlternatingRowBackground>
                 <SolidColorBrush Color="#FFD3F0E0"/>
             </DataGrid.AlternatingRowBackground>
+            
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="_Add"/>
@@ -63,6 +72,7 @@
                               Click="MenuDataDetails_Click"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
+            
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
                                     Binding="{Binding Name}"/>

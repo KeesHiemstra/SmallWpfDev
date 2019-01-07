@@ -23,7 +23,7 @@ namespace Medicines
   public partial class MainWindow : Window
   {
     private static MedicineList Stock = new MedicineList();
-    private static string StockFile = GetStockFile();
+    private static string StockFileName = GetStockFileName();
 
     public MainWindow()
     {
@@ -42,7 +42,7 @@ namespace Medicines
 
     private void LoadData()
     {
-      using (StreamReader sr = File.OpenText(StockFile))
+      using (StreamReader sr = File.OpenText(StockFileName))
       {
         string json = sr.ReadToEnd();
         Stock = JsonConvert.DeserializeObject<MedicineList>(json);
@@ -55,7 +55,7 @@ namespace Medicines
       DisplayRecordDate.SelectedDate = Stock.RecordingDate;
     }
 
-    private static string GetStockFile()
+    private static string GetStockFileName()
     {
       string OneDrive = Environment.GetEnvironmentVariable("OneDrive");
       string stockFile = $"{OneDrive}\\Data\\Medicines.json";
@@ -75,7 +75,7 @@ namespace Medicines
 
     private void MenuSave_Click(object sender, RoutedEventArgs e)
     {
-      Stock.Save(StockFile);
+      Stock.Save(StockFileName);
     }
 
     private void MenuDataDetails_Click(object sender, RoutedEventArgs e)
