@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Medicines"
         mc:Ignorable="d"
-        Title="Medicine details" Height="334" Width="574">
+        Title="Medicine details" Height="334" Width="575">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>

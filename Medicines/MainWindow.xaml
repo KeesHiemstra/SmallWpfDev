@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Medicines"
         mc:Ignorable="d"
-        Title="Medicines" Height="450" Width="1006">
+        Title="Medicines" Height="450" Width="1005">
     <Window.Resources>
         <ContextMenu  x:Key="RowMenu" DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
             <MenuItem Header="_Edit" Command="{Binding EditCommand}"/>

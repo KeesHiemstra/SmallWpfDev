@@ -12,6 +12,7 @@ namespace Medicines
     public DateTime RecordingDate { get; set; }
     public ObservableCollection<MedicineItem> Medicines = new ObservableCollection<MedicineItem>();
 
+
     public void UpdateRecordingDates()
     {
       foreach (var item in Medicines)

@@ -82,7 +82,6 @@ namespace Medicines
     {
       
 
-
       //MedicineDetails medicineDetails = new MedicineDetails();
       //medicineDetails.Show();
     }

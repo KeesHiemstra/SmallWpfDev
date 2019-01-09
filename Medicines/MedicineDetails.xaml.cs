@@ -30,7 +30,7 @@ namespace Medicines
 
     private void ButtonDetailsOK_Click(object sender, RoutedEventArgs e)
     {
-
+    
     }
 
     private void ButtonDetailsCancel_Click(object sender, RoutedEventArgs e)
