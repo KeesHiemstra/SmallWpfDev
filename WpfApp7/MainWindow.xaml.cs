@@ -20,11 +20,15 @@ namespace WpfApp7
   /// </summary>
   public partial class MainWindow : Window
   {
-    static private TestStock = new TestList();
+    private static TestList Stock = new TestList();
 
     public MainWindow()
     {
+      Stock.Items.Add(new TestItem { Name = "Test 1", Col1 = 1, Col2 = 2 });
+
       InitializeComponent();
+
+      dgTests.DataContext = Stock.Items;
     }
   }
 }

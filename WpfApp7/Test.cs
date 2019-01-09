@@ -9,11 +9,13 @@ namespace WpfApp7
 {
   public class TestItem
   {
+    public string Name { get; set; }
     public int Col1 { get; set; }
     public int Col2 { get; set; }
-    public int Col3
+    public int Sum
     {
       get => Col1 + Col2;
+      set => Sum = value;
     }
   }
 

@@ -6,11 +6,36 @@
         xmlns:local="clr-namespace:WpfApp7"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+<!--
+    <Grid Height="54" Width="165">
+
+        <TextBox  Name="textBox" Margin="0,-77,0,0" Height="23" VerticalAlignment="Top"
+                Text ="{Binding ElementName=listBox,
+                        Path=SelectedItem.Content,
+                        Mode=TwoWay,
+                        UpdateSourceTrigger=PropertyChanged}"
+                Background="{Binding ElementName=listBox, Path=SelectedItem.Content, Mode=OneWay}">
+        </TextBox>
+
+        <ListBox Name="listBox" >
+            <ListBoxItem Content="Green"/>
+            <ListBoxItem  Content="Yellow" IsSelected="True"/>
+            <ListBoxItem Content="Orange" />
+        </ListBox>
+
+    </Grid>
+  -->
     <Grid>
         <DataGrid Name="dgTests"
-                  ItemsSource="{Binding}">
-            
+                  ItemsSource="{Binding}"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="Col1" Binding="{Binding Path=Col1, ElementName=Tests.Col1, Mode=TwoWay}"/>
+                <DataGridTextColumn Header="Col2" Binding="{Binding Path=Col2}"/>
+                <DataGridTextColumn Header="Sum" Binding="{Binding Sum}"/>
+            </DataGrid.Columns>     
         </DataGrid>
-        
+     
     </Grid>
 </Window>
