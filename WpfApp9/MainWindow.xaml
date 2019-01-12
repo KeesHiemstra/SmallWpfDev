@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfApp9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp9"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="128" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1">
+            <TextBox Name="Arg1"
+                     Text="{Binding Path=Argument1, Mode=TwoWay}"
+                     Width="48"
+                     Margin="5,0,5,0"/>
+            <TextBox Text="{Binding Path=Argument2, Mode=TwoWay}"
+                     Width="48"
+                     Margin="5,0,5,0"/>
+            <TextBox Text="{Binding Path=Result, Mode=TwoWay}"
+                     Width="48"
+                     Margin="5,0,5,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
