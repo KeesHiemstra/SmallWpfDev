@@ -89,9 +89,9 @@
                 <DataGridCheckBoxColumn Header="Fixed"
                                         Binding="{Binding UseFixed}"/>
                 <DataGridTextColumn Header="Days"
-                                    Binding="{Binding UseDaysInPerode}"/>
+                                    Binding="{Binding UseDaysInPerode, Mode=TwoWay}"/>
                 <DataGridTextColumn Header="#/periode"
-                                    Binding="{Binding UsePerPeriode}"/>
+                                    Binding="{Binding UsePerPeriode, Mode=TwoWay}"/>
 
                 <DataGridTemplateColumn Header="Date" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
@@ -110,11 +110,11 @@
                 <DataGridTextColumn Header="Stock"
                                     Binding="{Binding Stock}"/>
                 <DataGridTextColumn Header="Actual"
-                                    Binding="{Binding Actual}" 
+                                    Binding="{Binding Actual, Mode=TwoWay}" 
                                     IsReadOnly="True"
                                     FontStyle="Italic"/>
                 <DataGridTextColumn Header="End date"
-                                    Binding="{Binding EmptyDate, StringFormat=\{0:yyyy-MM-dd\}}"
+                                    Binding="{Binding EmptyDate, Mode=TwoWay, StringFormat=\{0:yyyy-MM-dd\}}"
                                     IsReadOnly="True"
                                     FontStyle="Italic"/>
             </DataGrid.Columns>

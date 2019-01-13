@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Medicines
 {
-  public class MedicineItem
+  public class MedicineItem : INotifyPropertyChanged
   {
     private int Days;
     private float UsePerDay;
@@ -44,7 +46,20 @@ namespace Medicines
     /// <summary>
     /// Number of days of the periode
     /// </summary>
-    public int UseDaysInPerode { get; set; }
+    private int _UseDaysInPeriode;
+    public int UseDaysInPerode
+    {
+      get => _UseDaysInPeriode;
+      set
+      {
+        if (_UseDaysInPeriode != value)
+        {
+          _UseDaysInPeriode = value;
+          Actual = EstimateActualStock();
+          OnPropertyChanged("Actual");
+        }
+      }
+    }
 
     /// <summary>
     /// Number of medicines per periode
@@ -55,8 +70,12 @@ namespace Medicines
       get => _UsePerPeriode;
       set
       {
-        _UsePerPeriode = value;
-        Actual = EstimateActualStock();
+        if (_UsePerPeriode != value)
+        {
+          _UsePerPeriode = value;
+          //Actual = EstimateActualStock();
+          OnPropertyChanged("Actual");
+        }
       }
     }
 
@@ -69,8 +88,12 @@ namespace Medicines
       get => _RecordingDate;
       set
       {
-        _RecordingDate = value;
-        Days = (DateTime.Now.Date - RecordingDate).Days;
+        if (_RecordingDate != value)
+        {
+          _RecordingDate = value;
+          Days = (DateTime.Now.Date - RecordingDate).Days;
+          OnPropertyChanged("Actual");
+        }
       }
     }
 
@@ -91,20 +114,28 @@ namespace Medicines
     public DateTime EmptyDate
     {
       get => EstimateEmptyDate();
-      set => _EmptyDate = EstimateEmptyDate();
+      set
+      {
+        _EmptyDate = EstimateEmptyDate();
+        OnPropertyChanged("Actual");
+      }
     }
 
     /// <summary>
     /// Estimated number of medicines for today (calculated)
+    /// Is depending on UsePerPeriode and UseDaysInPerode
     /// </summary>
     private int _Actual;
+
     public int Actual
     {
       get => EstimateActualStock();
       set
       {
         _Actual = EstimateActualStock();
+        OnPropertyChanged("Actual");
         EmptyDate = EstimateEmptyDate();
+        OnPropertyChanged("EmpyDate");
       }
     }
 
@@ -123,7 +154,19 @@ namespace Medicines
 
     private DateTime EstimateEmptyDate()
     {
+      if (UsePerDay == 0)
+      {
+        return DateTime.Now;
+      }
       return DateTime.Now.Date.AddDays((int)(Actual / UsePerDay));
     }
+
+    #region Notification interface
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+      PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+    #endregion
   }
 }
