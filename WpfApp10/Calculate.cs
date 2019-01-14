@@ -1,24 +1,16 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace WpfApp9
+namespace WpfApp10
 {
-  /// <summary>
-  /// Interaction logic for MainWindow.xaml
-  /// </summary>
-  public partial class MainWindow : INotifyPropertyChanged
+  public class Calculate : INotifyPropertyChanged
   {
-    public MainWindow()
-    {
-      DataContext = this;
-      InitializeComponent();
-      Arg1.Focus();
-    }
-
-    #region Argument1
-
     private int _Argument1 = -1;
-
     public int Argument1
     {
       get => _Argument1;
@@ -32,12 +24,7 @@ namespace WpfApp9
       }
     }
 
-    #endregion Argument1
-
-    #region Argument2
-
     private int _Argument2 = -2;
-
     public int Argument2
     {
       get => _Argument2;
@@ -51,12 +38,7 @@ namespace WpfApp9
       }
     }
 
-    #endregion Argument2
-
-    #region Result
-
     private int _Result = -9;
-
     public int Result
     {
       get => CalulateResult();
@@ -64,28 +46,21 @@ namespace WpfApp9
       {
         if (_Result != value)
         {
-          _Result = Argument1 + Argument2;
+          _Result = CalulateResult();
           OnPropertyChanged();
         }
       }
     }
-
-    #endregion Result
 
     private int CalulateResult()
     {
       return _Argument1 + _Argument2;
     }
 
-    #region Notification interface
-
     public event PropertyChangedEventHandler PropertyChanged;
-
     private void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
-
-    #endregion Notification interface
   }
 }
