@@ -20,9 +20,11 @@ namespace WpfApp10
   /// </summary>
   public partial class MainWindow : Window
   {
+    static Calculate Calc = new Calculate();
+
     public MainWindow()
     {
-      DataContext = new Calculate();
+      DataContext = Calc;
       InitializeComponent();
 
       Arg1.Focus();
