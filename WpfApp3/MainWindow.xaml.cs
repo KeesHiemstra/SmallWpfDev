@@ -37,16 +37,16 @@ namespace WpfApp3
 
     private async Task GetPageAsync(string PageUrl)
     {
-      //MainPageDateDay.Text = PageDate.DayOfWeek.ToString();
-      //TabSourceBrowser.Source = new Uri(PageUrl);
-      //var http = new HttpClient();
-      //var httpRespond = await http.GetAsync(PageUrl);
-      //string httpResult = await httpRespond.Content.ReadAsStringAsync();
-      //TabSouceText.Text = httpResult;
+      MainPageDateDay.Text = PageDate.DayOfWeek.ToString();
+      TabSourceBrowser.Source = new Uri(PageUrl);
+      var http = new HttpClient();
+      var httpRespond = await http.GetAsync(PageUrl);
+      string httpResult = await httpRespond.Content.ReadAsStringAsync();
+      TabSouceText.Text = httpResult;
 
       //HtmlDocument doc = new HtmlDocument();
 
-      IHTMLDocument2 htmlDocument = (IHTMLDocument2)new mshtml.HTMLDocument();
+      //IHTMLDocument2 htmlDocument = (IHTMLDocument2)new mshtml.HTMLDocument();
 
     }
 
